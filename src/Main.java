@@ -14,7 +14,7 @@ public class Main {
         Collections.sort(coolNumbers);
         coolNumbersHashSet.addAll(coolNumbers); // копирование множества номеров HashSet
         coolNumbersTreeSet.addAll(coolNumbers); // копирование множества номеров TreeSet
-        
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
