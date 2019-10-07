@@ -64,7 +64,7 @@ public class Main {
 
     private static void searchBinary(String enterNumber) { // метод поиска номера бинарным способом
             long startTime = System.nanoTime();
-            if (binarySearch(coolNumbers, enterNumber)) {
+            if (isBinary(coolNumbers, enterNumber)) {
             long finishTime = System.nanoTime() - startTime;
             System.out.println("Number " + enterNumber + " found by Binary search, time spent   - " + finishTime + " ns.");
         }
@@ -75,7 +75,7 @@ public class Main {
     }
 
 
-    private static boolean binarySearch(ArrayList<String> arrayList, String enterNumber) { // метод для проверки наличия искомого номера в пределах списка
+    private static boolean isBinary(ArrayList<String> arrayList, String enterNumber) { // метод для проверки наличия искомого номера в пределах списка
         int a = Collections.binarySearch(arrayList, enterNumber);
         return a >= 0;
     }
