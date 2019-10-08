@@ -47,62 +47,47 @@ public class Main {
 
 
     private static void searchDirect(String enterNumber) { // метод поиска номера прямым переором
-        long startTime = System.nanoTime();
+            long startTime = System.nanoTime();
         for (int i = 0; i < coolNumbers.size(); i++) {
-            if (coolNumbers.contains(enterNumber)) {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " found by direct search, time spent   - " + finishTime + " ns.");
-                return;
-            } else {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " don't found by direct search, time spent  - " + finishTime + " ns.");
-                return;
-            }
+            boolean isFound = coolNumbers.contains(enterNumber);
+            long finishTime = System.nanoTime() - startTime;
+            String nameMethodSearch = "Direct ";
+            printFoundText(nameMethodSearch, enterNumber, isFound, finishTime);
+            return;
         }
     }
 
 
     private static void searchBinary(String enterNumber) { // метод поиска номера бинарным способом
             long startTime = System.nanoTime();
-            if (Collections.binarySearch(coolNumbers, enterNumber) >= 0) {
-//              if (isBinary(coolNumbers, enterNumber)) { // условие для метода isBinary
+            boolean isFound = Collections.binarySearch(coolNumbers, enterNumber) >= 0;
             long finishTime = System.nanoTime() - startTime;
-            System.out.println("Number " + enterNumber + " found by Binary search, time spent   - " + finishTime + " ns.");
-        }
-            else {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " don't found by Binary search, time spent   - " + finishTime + " ns.");
-            }
+            String nameMethodSearch = "Binary ";
+            printFoundText(nameMethodSearch, enterNumber, isFound, finishTime);
     }
 
 
-//    private static boolean isBinary(ArrayList<String> arrayList, String enterNumber) { // метод для проверки наличия искомого номера в пределах списка
-//        int a = Collections.binarySearch(arrayList, enterNumber);
-//        return a >= 0;
-//    }
-
-
     private static void searchHashSet(String enterNumber) { // метод поиска номера с использованием HashSet
-        long startTime = System.nanoTime();
-            if (coolNumbersHashSet.contains(enterNumber)) {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " found by HashSet search, time spent  - " + finishTime + " ns.");
-            } else {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " don't found by HashSet search, time spent - " + finishTime + " ns.");
-            }
+            long startTime = System.nanoTime();
+            boolean isFound = coolNumbersHashSet.contains(enterNumber);
+            long finishTime = System.nanoTime() - startTime;
+            String nameMethodSearch = "HashSet";
+            printFoundText(nameMethodSearch, enterNumber, isFound, finishTime);
     }
 
 
     private static void searchTreeSet(String enterNumber) { // метод поиска номера с использованием HashSet
-        long startTime = System.nanoTime();
-            if (coolNumbersTreeSet.contains(enterNumber)) {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " found by TreeSet search, time spent  - " + finishTime + " ns.");
-            } else {
-                long finishTime = System.nanoTime() - startTime;
-                System.out.println("Number " + enterNumber + " don't found by TreeSet search, time spent - " + finishTime + " ns.");
-            }
+            long startTime = System.nanoTime();
+            boolean isFound = coolNumbersTreeSet.contains(enterNumber);
+            long finishTime = System.nanoTime() - startTime;
+            String nameMethodSearch = "TreeSet";
+            printFoundText(nameMethodSearch, enterNumber, isFound, finishTime);
+    }
+
+    private static void printFoundText(String nameMethodSearch, String enterNumber, boolean isFound, long finishTime) { // метод печати информаци о найденом номере
+             String isFoundForTextPrint = isFound ? "found" : "don't found";
+             System.out.printf("Number %s %s by %s search, time spent   - %d ns.%n", enterNumber, isFoundForTextPrint, nameMethodSearch, finishTime);
+
     }
 
 }
